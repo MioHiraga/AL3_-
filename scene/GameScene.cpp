@@ -90,21 +90,42 @@ void GameScene::Update() {
 		//上キーで視野角広がる
 		if (input_->PushKey(DIK_UP)){
 		
-		  //  viewProjection_.fovAngleY += 0.01f;
-			//viewProjection_.fovAngleY = min(viewProjection_.fovAngleY, XM_PI);
+		  
 		    viewProjection_.nearZ += 0.1f;
 		} 
 		else if (input_->PushKey(DIK_DOWN)) {
 
-		//	viewProjection_.fovAngleY -= 0.01f;
-		//	viewProjection_.fovAngleY = min(viewProjection_.fovAngleY,0.01f);
 		    viewProjection_.nearZ -= 0.1f;
-		}
+		} 
+		else if (input_->PushKey(DIK_W)) {
+
+		    viewProjection_.fovAngleY += 0.01f;
+		    viewProjection_.fovAngleY = min(viewProjection_.fovAngleY, XM_PI);
+	    }
+		else if (input_->PushKey(DIK_S)) {
+
+		   	viewProjection_.fovAngleY -= 0.01f;
+		    viewProjection_.fovAngleY = min(viewProjection_.fovAngleY,0.01f);
+		    
+	    }
+
 
 		//行列の再計算
 		viewProjection_.UpdateMatrix();
 
 		//デバッグ表示
+	    debugText_->SetPos(50, 50);
+	    debugText_->Printf(
+	      "eye:(%f,%f,%f)", viewProjection_.eye.x, viewProjection_.eye.y, viewProjection_.eye.z);
+
+	    debugText_->SetPos(50, 70);
+	    debugText_->Printf(
+	      "target:(%f,%f,%f)", viewProjection_.target.x, viewProjection_.target.y,
+	      viewProjection_.target.z);
+
+	    debugText_->SetPos(50, 90);
+	    debugText_->Printf("up:(%f,%f,%f)", viewProjection_.up.x, viewProjection_.up.y, viewProjection_.up.z);
+
 		debugText_->SetPos(50, 110);
 		debugText_->Printf("fovAngleY(Degree):%f", XMConvertToDegrees(viewProjection_.fovAngleY));
 
@@ -175,15 +196,8 @@ void GameScene::Update() {
 		//行列の再計算
 	    viewProjection_.UpdateMatrix();
 
-		//デバッグ表示
-	    debugText_->SetPos(50, 50);
-	    debugText_->Printf("eye:(%f,%f,%f)", viewProjection_.eye.x, viewProjection_.eye.y, viewProjection_.eye.z);
-
-	    debugText_->SetPos(50, 75);
-	    debugText_->Printf("target:(%f,%f,%f)", viewProjection_.target.x, viewProjection_.target.y, viewProjection_.target.z);
-	
-	    debugText_->SetPos(50, 100);
-	    debugText_->Printf("up:(%f,%f,%f)", viewProjection_.up.x, viewProjection_.up.y,viewProjection_.up.z);
+		
+	  
 		
 		
 		*/
