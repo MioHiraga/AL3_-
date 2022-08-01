@@ -62,10 +62,25 @@ class GameScene {
 	float viewAngle = 0.0f;
 
 
-
 	//ワールドトランスフォーム
 	WorldTransform worldTransform_[100];
 
 	//ビュープロジェクション
 	ViewProjection viewProjection_;
+
+	public:
+		//パーツID
+		enum PartId {
+
+			Root,  //大元
+			Spine, //脊髄
+			Chest, //胸
+			Head,  //頭
+			ArmL,  //左腕
+			ArmR,  //右腕
+			Hip,   //尻
+			LegL,  //左足
+			LegR,  //右足
+	  };
+
 };

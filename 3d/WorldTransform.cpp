@@ -58,4 +58,7 @@ void WorldTransform::UpdateMatrix() {
 
 	// 定数バッファに書き込み
 	constMap->matWorld = matWorld_;
+
+	//親行列の指定がある場合は、掛け算する
+	
 }
